@@ -1,60 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-  <data>
-    <!-- explicit list view definition -->
-    <!--
-    <record model="ir.ui.view" id="pruebas.list">
-      <field name="name">pruebas list</field>
-      <field name="model">pruebas.pruebas</field>
-      <field name="arch" type="xml">
-        <tree>
-          <field name="name"/>
-          <field name="value"/>
-          <field name="value2"/>
-        </tree>
-      </field>
-    </record>
-    -->
+    <data>
 
-    <!-- actions opening views on models -->
-    <!--
-    <record model="ir.actions.act_window" id="pruebas.action_window">
-      <field name="name">pruebas window</field>
-      <field name="res_model">pruebas.pruebas</field>
-      <field name="view_mode">tree,form</field>
-    </record>
-    -->
+       <record id="id_importar_excel_form" model="ir.ui.view">
+           <field name="name">id.importar.excel.form</field>
+           <field name="model">pruebas.import.excel</field>
+           <field name="arch" type="xml">
+               <form string="Importar Excel Form">
+                 <header>
+                     <button name="importar_excel" string="Importar Excel" class="oe_highlight" states="" type="object"/>
+                 </header>
+                   <sheet>
+                       <group>
+                           <field name="name"/>
+                       </group>
+                   </sheet>
+               </form>
+           </field>
+       </record>
 
-    <!-- server action to the one above -->
-    <!--
-    <record model="ir.actions.server" id="pruebas.action_server">
-      <field name="name">pruebas server</field>
-      <field name="model_id" ref="model_pruebas_pruebas"/>
-      <field name="state">code</field>
-      <field name="code">
-        action = {
-          "type": "ir.actions.act_window",
-          "view_mode": "tree,form",
-          "res_model": self._name,
-        }
-      </field>
-    </record>
-    -->
+      <record id="id_importar_excel_tree" model="ir.ui.view">
+          <field name="name">id.importar.excel.tree</field>
+          <field name="model">pruebas.import.excel</field>
+          <field name="arch" type="xml">
+              <tree string="Importar Excel Tree">
+                  <field name="name"/>
+              </tree>
+          </field>
+      </record>
 
-    <!-- Top menu item -->
-    <!--
-    <menuitem name="pruebas" id="pruebas.menu_root"/>
-    -->
-    <!-- menu categories -->
-    <!--
-    <menuitem name="Menu 1" id="pruebas.menu_1" parent="pruebas.menu_root"/>
-    <menuitem name="Menu 2" id="pruebas.menu_2" parent="pruebas.menu_root"/>
-    -->
-    <!-- actions -->
-    <!--
-    <menuitem name="List" id="pruebas.menu_1_list" parent="pruebas.menu_1"
-              action="pruebas.action_window"/>
-    <menuitem name="Server to list" id="pruebas" parent="pruebas.menu_2"
-              action="pruebas.action_server"/>
-    -->
-  </data>
+      <record id="id_importar_excel_action" model="ir.actions.act_window">
+          <field name="name">Importar Excel</field>
+          <field name="type">ir.actions.act_window</field>
+          <field name="res_model">pruebas.import.excel</field>
+          <field name="view_mode">tree,form</field>
+          <field name="help" type="html">
+            <p class="oe_view_nocontent_create">
+              No hay documentos
+            </p><p>
+              Elija la opcion crear para agregar documentos
+            </p>
+          </field>
+      </record>
+
+      <!-- This Menu Item will appear in the Upper bar, That's why It needs NO parent or action -->
+      <menuitem id="menu_root_id_pruebas" name="Pruebas" sequence="1"/>
+
+      <!-- This Menu Item must have a parent and an action -->
+      <menuitem id="menu_id_importar_excel" name="Importar Excel" parent="menu_root_id_pruebas" action="id_importar_excel_action" sequence="1"/>
+
+    </data>
 </odoo>
