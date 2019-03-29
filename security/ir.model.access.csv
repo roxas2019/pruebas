@@ -1,2 +1,3 @@
 id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
 access_pruebas_importar_excel,pruebas_importar_excel,model_pruebas_import_excel,group_manager,1,1,1,1
+access_pruebas_persona,pruebas_persona,model_pruebas_persona,group_manager,1,1,1,1

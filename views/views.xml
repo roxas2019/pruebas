@@ -13,6 +13,13 @@
                    <sheet>
                        <group>
                            <field name="name"/>
+                           <field name="personas">
+                               <tree string="Personas">
+                                   <field name="nombre"/>
+                                   <field name="apellido_paterno"/>
+                                   <field name="apellido_materno"/>
+                               </tree>
+                           </field>
                        </group>
                    </sheet>
                </form>

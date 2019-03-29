@@ -17,6 +17,13 @@ class ImportExcel(models.Model):
         required=False,
     )
 
+    personas = fields.One2many(
+        comodel_name="pruebas.persona",
+        inverse_name="import_excel_id",
+        string="Personas",
+        required=False,
+    )
+
     def importar_excel(self):
         filename = 'simple.xls'
         ROOT = os.path.abspath(os.sep)
