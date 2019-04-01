@@ -2,6 +2,7 @@
 
 from odoo import models, fields, api
 from xlrd import open_workbook
+import base64
 import os
 import logging
 _logger = logging.getLogger(__name__)
@@ -17,6 +18,16 @@ class ImportExcel(models.Model):
         required=False,
     )
 
+    archivo = fields.Binary(
+        string="Archivo",
+        store=True
+    )
+
+    nombre_archivo = fields.Char(
+        string="Nombre Archivo",
+        required=False,
+    )
+
     personas = fields.One2many(
         comodel_name="pruebas.persona",
         inverse_name="import_excel_id",
@@ -25,11 +36,7 @@ class ImportExcel(models.Model):
     )
 
     def importar_excel(self):
-        filename = 'personas.xls'
-        ROOT = os.path.abspath(os.sep)
-        _logger.info('ROOT: {0}'.format(ROOT))
-        filepath = os.path.join('/opt/odoo/project_live_sessions/pruebas/models/', filename)
-        wb = open_workbook(filepath)
+        wb = open_workbook(file_contents=base64.decodestring(self.archivo))
         self.personas -= self.personas
         personas = []
         for s in wb.sheets():

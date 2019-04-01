@@ -13,6 +13,8 @@
                    <sheet>
                        <group>
                            <field name="name"/>
+                           <field name="nombre_archivo" invisible="1"/>
+                           <field name="archivo" widget="binary" filename="nombre_archivo"/>
                            <field name="personas">
                                <tree string="Personas">
                                    <field name="nombre"/>
